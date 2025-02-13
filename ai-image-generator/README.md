@@ -1,15 +1,100 @@
-# Ansh & Riley Full-Stack Template
+# AI Image Generator 🎨
 
-This is a full-stack template project for Software Composers to create  applications with AI.
+A modern web application that generates high-quality images using OpenAI's DALL-E 3 API. Built with Next.js 14, TypeScript, and Tailwind CSS.
 
-## Getting started
-To create a new project, you go to `/paths`, choose from our list of Paths, and then use Cursor's Composer feature to quickly scaffold your project!
+![AI Image Generator Demo](public/demo.gif)
 
-You can also edit the Path's prompt template to be whatever you like!
+## Features ✨
 
-## Technologies used
-This doesn't really matter, but is useful for the AI to understand more about this project. We are using the following technologies
-- React with Next.js 14 App Router
-- TailwindCSS
-- Firebase Auth, Storage, and Database
-- Multiple AI endpoints including OpenAI, Anthropic, and Replicate using Vercel's AI SDK
+- **Multiple Image Generation**: Generates 4 unique variations for each prompt
+- **Customizable Image Settings**:
+  - Size options (1024x1024, 1792x1024, 1024x1792)
+  - Quality settings (standard/HD)
+  - Style options (vivid/natural)
+- **Smart Preset System**:
+  - Art styles (Synthwave, Anime, Photorealistic, Digital Art, etc.)
+  - Quality presets
+  - Lighting options
+  - Perspective choices
+- **Modern UI/UX**:
+  - Responsive design
+  - Real-time loading states
+  - Error handling
+  - Image preview
+
+## Tech Stack 🛠️
+
+- **Frontend**:
+  - Next.js 14
+  - TypeScript
+  - Tailwind CSS
+  - React Hooks
+- **Backend**:
+  - Next.js API Routes
+  - OpenAI API (DALL-E 3)
+- **Development**:
+  - ESLint
+  - Prettier
+  - PostCSS
+
+## Getting Started 🚀
+
+### Prerequisites
+
+- Node.js 18+ installed
+- OpenAI API key
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/christopherpturney/ai-image-generator.git
+cd ai-image-generator
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Create a `.env.local` file in the root directory:
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+4. Start the development server:
+```bash
+npm run dev
+```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Usage 💡
+
+1. Enter your image prompt in the text field
+2. (Optional) Select presets to enhance your prompt:
+   - Choose an art style
+   - Select quality preset
+   - Pick lighting option
+   - Choose perspective
+3. Click "Generate Images"
+4. View and download your generated images
+
+## Security 🔒
+
+- API keys are securely stored in environment variables
+- All API calls are made server-side
+- No sensitive data is exposed to the client
+
+## Contributing 🤝
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License 📝
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments 🙏
+
+- Built with OpenAI's DALL-E 3
+- Inspired by the creative AI community
