@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 1, 22;
+  --background-end-rgb: 30, 12, 48;
+  --grid-color: rgba(120, 0, 255, 0.15);
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Synthwave Grid Effect */
+body::before {
+  content: '';
+  position: fixed;
+  width: 200%;
+  height: 200vh;
+  top: -50%;
+  left: -50%;
+  background: 
+    linear-gradient(transparent, var(--grid-color) 2px, transparent 2px),
+    linear-gradient(90deg, transparent, var(--grid-color) 2px, transparent 2px);
+  background-size: 40px 40px;
+  background-position: center;
+  transform: perspective(500px) rotateX(60deg);
+  animation: grid-move 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes grid-move {
+  0% {
+    transform: perspective(500px) rotateX(60deg) translateY(0);
+  }
+  100% {
+    transform: perspective(500px) rotateX(60deg) translateY(40px);
+  }
+}
+
+/* Neon Text Effect */
+.neon-text {
+  text-shadow: 
+    0 0 1px #fff,
+    0 0 2px #fff,
+    0 0 8px #ff00ff,
+    0 0 12px #ff00ff;
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 1px #fff,
+      0 0 2px #fff,
+      0 0 8px #ff00ff,
+      0 0 12px #ff00ff;
+  }
+  50% {
+    text-shadow: 
+      0 0 3px #fff,
+      0 0 6px #fff,
+      0 0 10px #ff00ff,
+      0 0 14px #ff00ff;
+  }
+}
+
+/* Synthwave Button */
+.synthwave-button {
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  border: none;
+  color: white;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 0 10px rgba(255, 0, 255, 0.5),
+    0 0 20px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.synthwave-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 15px rgba(255, 0, 255, 0.7),
+    0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+.synthwave-button:disabled {
+  background: linear-gradient(45deg, rgba(255, 0, 255, 0.3), rgba(0, 255, 255, 0.3));
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+/* Tooltip */
+.synthwave-button[data-tooltip]:disabled:hover {
+  cursor: not-allowed;
+}
+
+.synthwave-button[data-tooltip]:disabled:hover::before {
+  content: attr(data-tooltip);
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  color: #00ffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translate(-50%, -130%);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  z-index: 1000;
+}
+
+/* Synthwave Input */
+.synthwave-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  box-shadow: 
+    0 0 10px rgba(255, 0, 255, 0.2),
+    inset 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+.synthwave-input:focus {
+  border-color: #ff00ff;
+  box-shadow: 
+    0 0 15px rgba(255, 0, 255, 0.4),
+    inset 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+/* Synthwave Select */
+.synthwave-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.synthwave-select:focus {
+  border-color: #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+/* Image Grid */
+.synthwave-image {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 0 20px rgba(255, 0, 255, 0.3),
+    0 0 40px rgba(0, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.synthwave-image:hover {
+  transform: scale(1.02);
+  box-shadow: 
+    0 0 30px rgba(255, 0, 255, 0.5),
+    0 0 60px rgba(0, 255, 255, 0.3);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  @keyframes tooltip-follow {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
