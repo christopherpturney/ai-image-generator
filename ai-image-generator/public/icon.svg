@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect fill="#4F46E5" x="0" y="0" width="32" height="32" rx="8"/>
-        <path d="M8,12 L24,12 C25.1045695,12 26,12.8954305 26,14 L26,24 C26,25.1045695 25.1045695,26 24,26 L8,26 C6.8954305,26 6,25.1045695 6,24 L6,14 C6,12.8954305 6.8954305,12 8,12 Z" fill="#FFFFFF"/>
-        <circle fill="#4F46E5" cx="11" cy="17" r="2"/>
-        <path d="M10,22 L22,22 L18,16 L14,20 L12,18 L10,22 Z" fill="#4F46E5"/>
-        <path d="M20,8 L23,8 C23.5522847,8 24,8.44771525 24,9 L24,10 C24,10.5522847 23.5522847,11 23,11 L20,11 C19.4477153,11 19,10.5522847 19,10 L19,9 C19,8.44771525 19.4477153,8 20,8 Z" fill="#FFFFFF"/>
-    </g>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .bg { fill: #FF2D95 }
+        .sun { fill: #FFD700 }
+        .grid { stroke: #FF00FF; stroke-width: 0.5; opacity: 0.3 }
+        .horizon { stroke: #00FFFF; stroke-width: 2 }
+        .chip { fill: #00FFFF }
+    </style>
+    
+    <!-- Background -->
+    <rect class="bg" x="0" y="0" width="32" height="32" rx="8"/>
+    
+    <!-- Sun -->
+    <circle class="sun" cx="16" cy="12" r="6"/>
+    
+    <!-- Grid lines -->
+    <line class="grid" x1="8" y1="8" x2="8" y2="24"/>
+    <line class="grid" x1="16" y1="8" x2="16" y2="24"/>
+    <line class="grid" x1="24" y1="8" x2="24" y2="24"/>
+    
+    <!-- Horizon -->
+    <line class="horizon" x1="4" y1="20" x2="28" y2="20"/>
+    
+    <!-- AI chip -->
+    <rect class="chip" x="12" y="24" width="8" height="4"/>
 </svg> 
