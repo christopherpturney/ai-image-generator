@@ -23,18 +23,24 @@ export async function POST(request: Request) {
   try {
     const { prompt, size = "1024x1024", quality = "standard", style = "vivid" } = await request.json();
 
-    const response = await openai.images.generate({
-      model: "dall-e-3",
-      prompt,
-      n: 1,
-      size: size as "1024x1024" | "1792x1024" | "1024x1792",
-      quality: quality as "standard" | "hd",
-      style: style as "vivid" | "natural",
-    });
+    // Generate 4 images in parallel
+    const imagePromises = Array(4).fill(null).map(() =>
+      openai.images.generate({
+        model: "dall-e-3",
+        prompt,
+        n: 1,
+        size: size as "1024x1024" | "1792x1024" | "1024x1792",
+        quality: quality as "standard" | "hd",
+        style: style as "vivid" | "natural",
+      })
+    );
 
-    if (!response.data[0].url) {
+    const responses = await Promise.all(imagePromises);
+    const images = responses.map(response => response.data[0].url).filter(Boolean);
+
+    if (images.length === 0) {
       return new NextResponse(
-        JSON.stringify({ error: "Failed to generate image" }),
+        JSON.stringify({ error: "Failed to generate any images" }),
         { 
           status: 500,
           headers: { 'Content-Type': 'application/json' }
@@ -43,7 +49,7 @@ export async function POST(request: Request) {
     }
 
     return new NextResponse(
-      JSON.stringify({ output: [response.data[0].url] }),
+      JSON.stringify({ output: images }),
       { 
         status: 200,
         headers: { 'Content-Type': 'application/json' }
